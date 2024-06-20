@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  # Development container.
+  # Runs with live-reloading on every source file update.
+  sast-worker-docker-dev:
+    hostname: sast-worker-docker
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - trivy-server
+
+  # Debug container.
+  # Runs in debug mode
+  sast-worker-docker-debug:
+      hostname: sast-worker-docker-debug
+      restart: unless-stopped
+      build:
+        context: ./
+        dockerfile: Dockerfile
+        target: debug
+      security_opt:
+        - apparmor=unconfined
+      cap_add:
+        - SYS_PTRACE
+      volumes:
+        - ./config.yaml:/config.yaml
+      ports:
+        - "8080:8080"
+        - "8081:8081"
+        - "40000:40000"
+      depends_on:
+        - trivy-server
+
+  # Prod container.
+  # Runs in prod mode
+  sast-worker-docker-prod:
+    hostname: sast-worker-docker-prod
+    restart: on-failure
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: production
+    volumes:
+      - ./config.yaml:/app/config.yaml
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - trivy-server
+
+  # Standalone trivy server
+  trivy-server:
+    hostname: trivy-server
+    restart: on-failure
+    build:
+      context: ./
+      dockerfile: Dockerfile.trivy
+    ports:
+      - "8888:8080"

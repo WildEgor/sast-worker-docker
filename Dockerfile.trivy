@@ -1,0 +1,7 @@
+FROM aquasec/trivy:latest
+
+RUN mkdir /tmp/trivy
+
+EXPOSE 8080
+
+ENTRYPOINT ["trivy", "--cache-dir", "/tmp/trivy/", "server", "--listen", "0.0.0.0:8080"]

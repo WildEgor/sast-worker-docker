@@ -1,0 +1,48 @@
+# name of threshold level (error | warning | info | style | ignore | none)
+failure-threshold: error
+# Output format (tty | json | checkstyle | codeclimate | gitlab_codeclimate | gnu | codacy)
+format: json
+# list of rules
+#ignored:
+#  - DL3000
+#  - SC1010
+# See Linting Labels below for specific label-schema details
+label-schema:
+  # Your name
+  author: ""
+  # email address
+  contact: ""
+  # rfc3339 datetime
+  created: "2024-06-14T00:00:00Z"
+  # semver
+  version: "0.0.1"
+  # url
+  documentation: ""
+  # hash
+  git-revision: ""
+  # spdx
+  license: "MIT"
+# boolean
+no-color: false
+# boolean
+no-fail: true
+#override:
+#  error:
+#    - DL3001
+#    - DL3002
+#  warning:
+#    - DL3042
+#    - DL3033
+#  info:
+#    - DL3032
+#  style:
+#    - DL3015
+# boolean
+strict-labels: true
+# boolean
+disable-ignore-pragma: true
+# registry or list of registries
+#trustedRegistries:
+#  - docker.io
+#  - my-company.com:5000
+#  - "*.gcr.io"

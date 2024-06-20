@@ -1,0 +1,15 @@
+app:
+  name: sast-worker-docker
+  http_port: "8080"
+  grpc_port: "8081"
+  mode: "develop" # "develop" or "prod"
+  temp_path: "/app/temp" # for temp Dockerfiles
+  scripts_path: "/app/scripts" # sh scripts
+
+trivy:
+  api: "http://localhost:8888"
+  token: "TODO"
+
+logger:
+  level: "debug" # "debug" or "info"
+  format: "json" # "json" or "pretty"

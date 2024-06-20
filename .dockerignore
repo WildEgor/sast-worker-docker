@@ -1,0 +1,6 @@
+dist
+vendor
+docker-compose.yml
+.air.toml
+.air-unix.toml
+config*.yaml

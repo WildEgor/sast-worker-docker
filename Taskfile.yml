@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  # Run using docker
+  docker-dev:
+    dir: '{{.USER_WORKING_DIR}}'
+    preconditions:
+      - test -f docker-compose.yml
+    cmd: docker-compose up -d sast-worker-docker
+
+  # Run using docker
+  docker-debug:
+    dir: '{{.USER_WORKING_DIR}}'
+    preconditions:
+      - test -f docker-compose.yml
+    cmd: docker-compose up -d sast-worker-docker-debug
+
+  # Run in dev mode
+  local-dev:
+    cmd: air -d
+
+  # Create pb
+  proto:
+    cmd: protoc --proto_path=./api proto/worker.proto --go_out=internal/adapters/rpc --go_opt=module=tea.gitpark.ru/sast/dockerwrapper/rpc --go-grpc_out=internal/adapters/rpc --go-grpc_opt=module=tea.gitpark.ru/sast/dockerwrapper/rpc

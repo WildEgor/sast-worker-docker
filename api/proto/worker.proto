@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package worker.v1;
+
+option go_package = "tea.gitpark.ru/sast/dockerwrapper/rpc";
+
+message AnalyzeFilePayload {
+  string filename = 1;
+  string content = 2;
+}
+
+message AnalyzeFileResult {
+  string code = 1;
+  string msg = 2;
+  int32 coll = 3;
+  int32 line = 4;
+}
+
+message AnalyzeDockerfileRequest {
+  AnalyzeFilePayload file = 1;
+}
+
+message AnalyzeFileResponse {
+    repeated AnalyzeFileResult result = 1;
+    int32 errors = 2;
+}
+
+service SASTWorker {
+  rpc HealthCheck(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc AnalyzeFile(AnalyzeDockerfileRequest) returns (AnalyzeFileResponse);
+}
