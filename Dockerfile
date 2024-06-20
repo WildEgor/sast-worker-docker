@@ -59,3 +59,7 @@ COPY --from=build /app/dist/app .
 COPY --from=base /usr/local/bin/hadolint /usr/local/bin/hadolint
 COPY --from=base /usr/local/bin/trivy /usr/local/bin/trivy
 CMD ["./app"]
+
+FROM bufbuild/buf as buf
+WORKDIR /proto/
+ENTRYPOINT ["buf", "build"]

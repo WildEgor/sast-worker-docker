@@ -66,3 +66,11 @@ services:
       dockerfile: Dockerfile.trivy
     ports:
       - "8888:8080"
+
+  buf-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: buf
+    volumes:
+      - ./api/proto:/proto
