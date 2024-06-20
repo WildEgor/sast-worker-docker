@@ -1,4 +1,7 @@
-SAST wrapper for Dockerfiles
+SAST worker for Dockerfiles 
+
+## Features
+- Expose gRPC API for lint and vulnerabilities check;
 
 ## Requirements
 - [Git](http://git-scm.com/)
