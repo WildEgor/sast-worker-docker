@@ -21,4 +21,4 @@ tasks:
 
   # Create pb
   proto:
-    cmd: protoc --proto_path=./api proto/worker.proto --go_out=internal/adapters/rpc --go_opt=module=tea.gitpark.ru/sast/dockerwrapper/rpc --go-grpc_out=internal/adapters/rpc --go-grpc_opt=module=tea.gitpark.ru/sast/dockerwrapper/rpc
+    cmd: protoc --proto_path=./api proto/worker.proto --go_out=internal/adapters/rpc --go_opt=module=github.com/WildEgor/sast-worker-docker/rpc --go-grpc_out=internal/adapters/rpc --go-grpc_opt=module=github.com/WildEgor/sast-worker-docker/rpc

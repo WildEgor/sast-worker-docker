@@ -4,7 +4,7 @@ import "google/protobuf/empty.proto";
 
 package worker.v1;
 
-option go_package = "tea.gitpark.ru/sast/dockerwrapper/rpc";
+option go_package = "github.com/WildEgor/sast-worker-docker/rpc";
 
 message AnalyzeFilePayload {
   string filename = 1;

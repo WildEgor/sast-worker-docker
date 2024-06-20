@@ -6,7 +6,8 @@ SAST wrapper for Dockerfiles
 - [Docker](https://www.docker.com/products/docker-desktop/)
 - [Task](https://taskfile.dev/)
 - [Air](https://github.com/air-verse/air)
-- [Protoc]()
+- [Protoc](https://grpc.io/docs/protoc-installation/)
+- [Buf](https://buf.build/docs/installation)
 
 ## Links
 - https://github.com/aquasecurity/trivy
